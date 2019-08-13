@@ -1,0 +1,36 @@
+ create table userdetails(
+    user_id number(13) unique,
+    employee_id varchar2(13) primary key,
+    email_id varchar2(30) not null,
+    name varchar2(25) not null,
+    password varchar2(25) not null,
+    phone_number varchar2(12) not null,
+    age number(2) not null,
+    gender varchar2(11) not null,
+   date_time timestamp default sysdate,
+   status number
+   );
+
+
+
+create table pool_details(
+pool_details_id number(12) unique,
+employee_id varchar2(13),
+type varchar2(6) not null,
+origin varchar2(13) not null,
+destination varchar2(13) not null,
+start_time varchar2(7) not null,
+return_time varchar2(7) not null,
+country varchar2(13),
+city varchar2(13),
+seats number(2) default 1,
+date_time timestamp default sysdate,
+CONSTRAINT fk_pooldetails
+FOREIGN KEY(employee_id)
+REFERENCES userdetails(employee_id)
+ON DELETE CASCADE
+);
+
+
+
+
